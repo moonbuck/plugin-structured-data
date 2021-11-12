@@ -53,7 +53,7 @@
 
 {{- /* Add description */ -}}
 {{- with .Summary -}}
-{{- $data.SetInMap "data" "description" . -}}
+{{- $data.SetInMap "data" "description" (. | plainify | chomp) -}}
 {{- end -}}
 
 {{- /* Add the word count */ -}}
@@ -63,6 +63,6 @@
 
 {{- $data = $data.Get "data" -}}
 
-<script type="application/ld+json">{{ $data | jsonify | safeJS }}</script>
+<script type="application/ld+json">{{ $data | jsonify | safeHTML }}</script>
 
 {{- end -}}
