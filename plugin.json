@@ -1,0 +1,20 @@
+{
+    "version": "1.0.0",
+    "title": "Moondeer's Structured Data",
+    "description": "Injects structured data into head via a JSON-LD script tag.",
+    "includes": [
+        "structured-data-injection.html"
+    ],
+    "fields": [
+        {
+          "field": "params.structured_data_author_name",
+          "label": "Author Name",
+          "placeholder": "[FULLNAME]"
+        },
+        {
+          "field": "params.structured_data_author_profile_url",
+          "label": "Author Profile URL",
+          "placeholder": "[SCHEME]://[HOSTNAME]/about/"
+        }
+    ]
+  }
