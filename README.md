@@ -1,16 +1,17 @@
-#plugin-structured-data
-A plugin for [Micro.blog] that injects [structured data] for blog posts via a JSON-LD script tag. This is what search engines use to decorate their results. Confirmation that the structured data is accessible can be had by using Google’s [rich results test].
+# plugin-structured-data
+A plugin for [Micro.blog](https://micro.blog "Micro.blog") that injects [structured data](https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data "Structured Data Intro") for blog posts via a JSON-LD script tag. This is what search engines use to decorate their results. Confirmation that the structured data is accessible can be had by using Google’s [rich results test](https://search.google.com/test/rich-results "Rich Results").
 
-##Parameters
-(img)
+## Parameters
+![Plugin Parameters](https://raw.githubusercontent.com/moonbuck/plugin-structured-data/main/plugin_parameters.jpeg)
 
 You can enter an `Author Name` here, the plugin falls back to `site.Author.name` and `site.Params.Author.name`.
 
 The `Author Profile URL` should point to an about or profile page. If you don’t have one you can leave this empty.
 
-##Files
+## Files
 There is only one file. It lives at `layouts/partials/structured-data-injection.html` and it looks like this:
 
+```go
 {{- if (eq .Type "post") -}}
 
 {{- /* Create a Scratch instance to gather data */ -}}
@@ -79,10 +80,12 @@ There is only one file. It lives at `layouts/partials/structured-data-injection.
 <script type="application/ld+json">{{ $data | jsonify | safeHTML }}</script>
 
 {{- end -}}
+```
 
-##Example Output
-As an example, the JSON object the plugin generates for [this blog post] looks like this:
+## Example Output
+As an example, the JSON object the plugin generates for [this blog post](https://moondeer-test.micro.blog/2021/11/11/feeding-data-to.html "Feeding Data to My Plugins") looks like this:
 
+```json
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
@@ -119,3 +122,4 @@ As an example, the JSON object the plugin generates for [this blog post] looks l
   ],
   "wordcount": 3268
 }
+```
