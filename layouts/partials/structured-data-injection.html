@@ -12,7 +12,7 @@
 {{- with $author_name -}}
 {{- $data.SetInMap "author" "@type" "Person" -}}
 {{- $data.SetInMap "author" "name" . -}}
-{{- with site.Params.structured_data_author_profile_url -}}
+{{- with site.Author.profileurl | default site.Params.structured_data_author_profile_url -}}
 {{- $data.SetInMap "author" "url" . -}}
 {{- end -}}
 {{- end -}}
